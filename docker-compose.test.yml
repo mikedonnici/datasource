@@ -1,0 +1,51 @@
+services:
+
+  mongo-1:
+    image: mongo
+    restart: always
+    ports:
+      - 27018:27017
+  mongo-2:
+    image: mongo
+    restart: always
+    ports:
+      - 27019:27017
+
+  postgres-1:
+    image: postgres
+    ports:
+      - 5433:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+  postgres-2:
+    image: postgres
+    ports:
+      - 5434:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+
+  pulsar-1:
+    image: apachepulsar/pulsar
+    ports:
+      - 6651:6650
+      - 8080:8080
+    command: [ "bin/pulsar", "standalone" ]
+  pulsar-2:
+    image: apachepulsar/pulsar
+    ports:
+      - 6652:6650
+      - 8081:8080
+    command: [ "bin/pulsar", "standalone" ]
+
+  solr:
+    image: solr:8
+    ports:
+      - "8983:8983"
+    command:
+      - solr-precreate
+      - gettingstarted
+
