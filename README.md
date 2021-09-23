@@ -23,7 +23,6 @@ Todo:
 A quick example:
 
 ```go
-
 // A service...
 srvc := struct {
 	Connections datasource.Connections
@@ -33,6 +32,4 @@ srvc := struct {
 srvc.Connections.AddPostgresConnection("pg1", "postgres://.....")
 srvc.Connections.AddPostgresConnection("pg2", "postgres://.....")
 srvc.Connections.AddMongoConnection("mg1", "mongodb://.....")
-
-
 ```
